@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Номер телефона</th>
+        <th>Почта</th>
+    </tr>
+    </thead>
+    <tbody>
+    <div th:each="el : ${users}">
+        <tr>
+            <td th:name="${el.id}"><p th:text="${el.username}"/></td>
+            <td th:name="${el.id}"><p th:text="${el.lastname}"/></td>
+            <td th:name="${el.id}"><p th:text="${el.phoneNumber}"/></td>
+            <td th:name="${el.id}"><p th:text="${el.email}"/></td>
+            <td><a th:href=" '/tasks/user/' + ${el.id}">Задачи</a></td>
+            <td>
+                <form th:action="'/users/'+${el.id}+'/delete'" method="post">
+                    <button> Удалить пользователя</button>
+                </form>
+                <form th:action="'/users/'+${el.id}+'/delete'" method="post">
+                    <button> добавить пользователя </button>
+                </form>
+                <form th:action="'/users/'+${el.id}+'/delete'" method="post">
+                    <button> Обновить пользователя </button>
+                </form>
+
+            </td>
+        </tr>
+    </div>
+    </tbody>
+</table>
+</div>
+</body>
+</html>
